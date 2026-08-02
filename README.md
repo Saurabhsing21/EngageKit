@@ -138,7 +138,30 @@ Use thoughtfully. EngageKit is built for personal productivity, not spam or auto
 | [Architecture](Docs/linkedin-extension-architecture%20(1).md) | Extension design and LinkedIn risk notes |
 | [Test plan](Docs/engagelens-test-plan.md) | Manual and automated test strategy |
 | [Test cases](Docs/engagelens-test-cases.md) | Unit / integration / manual cases |
+| [Privacy policy](Docs/privacy-policy.md) | Required for Chrome Web Store (host publicly) |
+| [Chrome Web Store publish guide](Docs/chrome-web-store-publish.md) | Step-by-step dashboard + listing checklist |
 | [Extension README](extension/README.md) | Load instructions and layout details |
+
+---
+
+## Publish to the Chrome Web Store
+
+Full walkthrough: **[Docs/chrome-web-store-publish.md](Docs/chrome-web-store-publish.md)**
+
+Short version:
+
+1. Register at the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole) ($5 one-time, 2-Step Verification required)
+2. Host [`Docs/privacy-policy.md`](Docs/privacy-policy.md) on a public HTTPS URL (replace the email placeholders first)
+3. Package the extension:
+
+```bash
+./scripts/package-extension.sh
+# → dist/engagekit-1.0.0.zip
+```
+
+4. Upload the ZIP → fill listing, privacy, permission justifications → choose **Public** or **Unlisted** → Submit for review
+
+Take screenshots of the LinkedIn feed with the Engage button and the side panel (1280×800 preferred).
 
 ---
 

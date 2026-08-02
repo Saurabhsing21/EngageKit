@@ -1,9 +1,10 @@
 {
   "name": "engagekit-extension",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "private": true,
   "description": "EngageKit Chrome extension — AI-assisted LinkedIn comment drafting",
   "scripts": {
-    "test": "node --test test/**/*.test.js"
+    "test": "node --test test/**/*.test.js",
+    "package": "bash ../scripts/package-extension.sh"
   }
 }

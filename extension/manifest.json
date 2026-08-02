@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "EngageKit",
-  "version": "0.1.6",
-  "description": "EngageKit — AI-assisted LinkedIn comment drafting via OpenRouter. Draft locally, paste manually.",
+  "version": "1.0.0",
+  "description": "Draft thoughtful LinkedIn comments with AI. Click Engage, tweak tone, copy — you paste manually.",
   "permissions": ["storage", "sidePanel"],
   "host_permissions": [
     "https://www.linkedin.com/*",
