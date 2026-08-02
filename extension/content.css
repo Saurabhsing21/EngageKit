@@ -1,0 +1,143 @@
+/* EngageLens content script styles — inline Engage on actor row + FAB */
+
+.engage-ext-post-root {
+  position: relative !important;
+}
+
+/* Inline pill on the author / Follow header line (preferred) */
+.engage-ext-post-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 999px;
+  background: #0a66c2;
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  cursor: pointer;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(10, 102, 194, 0.35);
+  transition: background 0.15s ease, transform 0.15s ease;
+  pointer-events: auto;
+  flex-shrink: 0;
+  z-index: 5;
+}
+
+.engage-ext-post-btn--inline {
+  position: static;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.engage-ext-post-btn--absolute {
+  position: absolute;
+  top: 12px;
+  right: 48px;
+  z-index: 2147483000;
+}
+
+.engage-ext-post-btn:hover {
+  background: #004182;
+  transform: translateY(-1px);
+}
+
+.engage-ext-post-btn:active {
+  transform: translateY(0);
+}
+
+.engage-ext-post-btn__icon {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+.engage-ext-post-btn__label {
+  display: inline;
+  letter-spacing: -0.01em;
+  color: #fff !important;
+}
+
+/* Flex slot at end of actor header row */
+.engage-ext-actor-row {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.engage-ext-header-slot {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.engage-ext-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 88px;
+  z-index: 2147483000;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 10px 12px;
+  border: 2px solid #0a66c2;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0a66c2;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.engage-ext-fab:hover {
+  background: #f3f8fc;
+  transform: translateY(-1px);
+}
+
+.engage-ext-fab__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #0a66c2;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.engage-ext-fab__text {
+  letter-spacing: -0.01em;
+}
+
+.engage-ext-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  z-index: 2147483001;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  max-width: min(90vw, 360px);
+  text-align: center;
+}
+
+.engage-ext-toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

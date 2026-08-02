@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EngageLens Settings</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="engage-popup">
+    <header class="engage-popup__header">
+      <span class="engage-popup__logo" aria-hidden="true">E</span>
+      <div>
+        <h1 class="engage-popup__title">EngageLens Settings</h1>
+        <p class="engage-popup__subtitle">Stored locally on this device only</p>
+      </div>
+    </header>
+
+    <form id="engage-settings-form" class="engage-popup__form" autocomplete="off">
+      <label class="engage-popup__field">
+        <span>OpenRouter API key</span>
+        <input
+          type="password"
+          id="engage-api-key"
+          name="apiKey"
+          placeholder="sk-or-…"
+          spellcheck="false"
+        />
+      </label>
+
+      <label class="engage-popup__field">
+        <span>Default model</span>
+        <select id="engage-model" name="defaultModel"></select>
+      </label>
+
+      <label class="engage-popup__field" id="engage-custom-model-wrap">
+        <span>Custom model ID</span>
+        <input
+          type="text"
+          id="engage-custom-model"
+          name="customModel"
+          placeholder="provider/model-name"
+          spellcheck="false"
+        />
+      </label>
+
+      <label class="engage-popup__field">
+        <span>Default tone</span>
+        <select id="engage-tone" name="defaultTone"></select>
+      </label>
+
+      <label class="engage-popup__field">
+        <span>Default length</span>
+        <select id="engage-length" name="defaultLength"></select>
+      </label>
+
+      <div class="engage-popup__status" id="engage-status" role="status">No API key</div>
+
+      <div class="engage-popup__actions">
+        <button type="submit" class="engage-popup__btn engage-popup__btn--primary">Save</button>
+        <button type="button" id="engage-test" class="engage-popup__btn engage-popup__btn--secondary">
+          Test connection
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script src="lib/constants.js"></script>
+  <script src="lib/storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

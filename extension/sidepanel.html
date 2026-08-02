@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EngageLens</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <div class="engage-ext-app">
+    <header class="engage-ext-header">
+      <div class="engage-ext-header__brand">
+        <span class="engage-ext-logo" aria-hidden="true">E</span>
+        <span class="engage-ext-title">EngageLens</span>
+      </div>
+      <div class="engage-ext-header__actions">
+        <button type="button" id="engage-help-toggle" class="engage-ext-icon-btn" title="Help" aria-label="Help">?</button>
+      </div>
+    </header>
+
+    <nav class="engage-ext-tabs" aria-label="Sections">
+      <button type="button" class="engage-ext-tab engage-ext-tab--active" data-tab="comments">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        Comments
+      </button>
+    </nav>
+
+    <div id="engage-api-banner" class="engage-ext-banner engage-ext-banner--hidden" role="status">
+      <span>Add your OpenRouter key in settings to generate comments.</span>
+      <button type="button" id="engage-open-settings-banner" class="engage-ext-link-btn">Open settings</button>
+    </div>
+
+    <main class="engage-ext-main">
+      <section class="engage-ext-section">
+        <label class="engage-ext-label" for="engage-post-text">LinkedIn post</label>
+        <div id="engage-post-loaded" class="engage-ext-loaded engage-ext-hidden" role="status">
+          Post loaded from feed
+        </div>
+        <div class="engage-ext-textarea-wrap">
+          <textarea
+            id="engage-post-text"
+            class="engage-ext-textarea"
+            placeholder="Post text loads here when you click Engage on a feed post…"
+            maxlength="10000"
+            rows="8"
+          ></textarea>
+          <div class="engage-ext-char-count"><span id="engage-char-count">0</span> / 10,000</div>
+        </div>
+        <div
+          id="engage-image-zone"
+          class="engage-ext-image-zone"
+          tabindex="0"
+          aria-label="Optional image attach zone"
+        >
+          <p class="engage-ext-image-zone__hint">
+            Attach image (optional) — paste or drop screenshots here. Generation still uses text only.
+          </p>
+          <div id="engage-image-previews" class="engage-ext-image-previews"></div>
+        </div>
+      </section>
+
+      <section class="engage-ext-section">
+        <div class="engage-ext-label">Comment style</div>
+        <div id="engage-style-chips" class="engage-ext-chips" role="group" aria-label="Comment style"></div>
+      </section>
+
+      <section class="engage-ext-section">
+        <div class="engage-ext-label">Length</div>
+        <div id="engage-length-toggle" class="engage-ext-segmented" role="group" aria-label="Comment length"></div>
+      </section>
+
+      <section class="engage-ext-section">
+        <div id="engage-instructions-collapsed" class="engage-ext-instructions">
+          <div class="engage-ext-instructions__left">
+            <span class="engage-ext-instructions__icon" aria-hidden="true">⚙</span>
+            <span id="engage-instructions-summary">Custom instructions are off. Guide the AI response tone.</span>
+          </div>
+          <button type="button" id="engage-instructions-edit" class="engage-ext-link-btn">Edit</button>
+        </div>
+        <div id="engage-instructions-expanded" class="engage-ext-instructions-edit engage-ext-hidden">
+          <textarea
+            id="engage-instruction"
+            class="engage-ext-textarea engage-ext-textarea--sm"
+            placeholder='e.g. "mention I&#39;m a final-year CS student"'
+            rows="3"
+          ></textarea>
+          <div class="engage-ext-instructions-edit__actions">
+            <button type="button" id="engage-instructions-done" class="engage-ext-btn engage-ext-btn--ghost">Done</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="engage-ext-section">
+        <button type="button" id="engage-generate" class="engage-ext-btn engage-ext-btn--primary">
+          <span class="engage-ext-btn__icon" aria-hidden="true">✦</span>
+          <span id="engage-generate-label">Generate Comment</span>
+        </button>
+      </section>
+
+      <section id="engage-help" class="engage-ext-help engage-ext-hidden">
+        <div class="engage-ext-help__title">How to generate comments</div>
+        <ol class="engage-ext-help__list">
+          <li>Click the Engage icon on a LinkedIn feed post (or paste text above).</li>
+          <li>Pick a style and length, optionally add a custom instruction.</li>
+          <li>Generate, review, copy, and paste into LinkedIn yourself — nothing auto-posts.</li>
+        </ol>
+      </section>
+
+      <section id="engage-error" class="engage-ext-error engage-ext-hidden" role="alert">
+        <p id="engage-error-text"></p>
+        <button type="button" id="engage-retry" class="engage-ext-btn engage-ext-btn--ghost">Retry</button>
+      </section>
+
+      <section id="engage-result" class="engage-ext-result engage-ext-hidden">
+        <div class="engage-ext-label">Draft comment</div>
+        <div id="engage-result-text" class="engage-ext-result-box" tabindex="0"></div>
+        <div class="engage-ext-result-actions">
+          <button type="button" id="engage-copy" class="engage-ext-btn engage-ext-btn--secondary">Copy</button>
+          <button type="button" id="engage-regenerate" class="engage-ext-btn engage-ext-btn--ghost">Regenerate</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="engage-ext-footer">
+      <div class="engage-ext-footer__brand">
+        <span class="engage-ext-logo engage-ext-logo--sm" aria-hidden="true">E</span>
+        <span>EngageLens</span>
+      </div>
+      <button type="button" id="engage-open-settings" class="engage-ext-icon-btn" title="Settings" aria-label="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96a7.07 7.07 0 0 0-1.63-.94l-.36-2.54A.48.48 0 0 0 14 2h-4a.48.48 0 0 0-.48.41l-.36 2.54c-.59.22-1.14.53-1.63.94l-2.39-.96a.49.49 0 0 0-.59.22L2.63 8.87a.49.49 0 0 0 .12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.3.59.22l2.39-.96c.49.41 1.04.72 1.63.94l.36 2.54c.05.24.25.41.48.41h4c.23 0 .43-.17.48-.41l.36-2.54c.59-.22 1.14-.53 1.63-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 0 0-.12-.61l-2.03-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/>
+        </svg>
+      </button>
+    </footer>
+  </div>
+
+  <script src="lib/constants.js"></script>
+  <script src="lib/storage.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

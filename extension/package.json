@@ -1,0 +1,9 @@
+{
+  "name": "engagelens-extension",
+  "version": "0.1.0",
+  "private": true,
+  "description": "EngageLens Chrome extension — unit tests for pure logic",
+  "scripts": {
+    "test": "node --test test/**/*.test.js"
+  }
+}
