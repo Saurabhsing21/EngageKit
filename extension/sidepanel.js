@@ -57,7 +57,7 @@
         height: 520
       })
       .catch(() => {
-        alert('Open EngageLens settings from the toolbar extension icon.');
+        alert('Open EngageKit settings from the toolbar extension icon.');
       });
   }
 

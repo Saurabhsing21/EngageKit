@@ -8,7 +8,7 @@ importScripts('lib/constants.js', 'lib/storage.js', 'lib/prompt.js');
 chrome.runtime.onInstalled.addListener(() => {
   chrome.sidePanel
     .setPanelBehavior({ openPanelOnActionClick: false })
-    .catch((err) => console.warn('[EngageLens] setPanelBehavior', err));
+    .catch((err) => console.warn('[EngageKit] setPanelBehavior', err));
 });
 
 chrome.sidePanel
@@ -29,7 +29,7 @@ async function callOpenRouter({ apiKey, model, messages, maxTokens }) {
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
         'HTTP-Referer': 'chrome-extension://engagelens',
-        'X-Title': 'EngageLens'
+        'X-Title': 'EngageKit'
       },
       body: JSON.stringify({
         model,
@@ -155,10 +155,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       try {
         await openPromise;
       } catch (err) {
-        console.warn('[EngageLens] sidePanel.open', err);
+        console.warn('[EngageKit] sidePanel.open', err);
         sendResponse({
           error:
-            'Could not open side panel. Click the EngageLens toolbar icon once, then try the FAB again.'
+            'Could not open side panel. Click the EngageKit toolbar icon once, then try the FAB again.'
         });
         return;
       }

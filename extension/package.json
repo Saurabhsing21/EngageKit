@@ -1,8 +1,8 @@
 {
-  "name": "engagelens-extension",
-  "version": "0.1.0",
+  "name": "engagekit-extension",
+  "version": "0.1.6",
   "private": true,
-  "description": "EngageLens Chrome extension — unit tests for pure logic",
+  "description": "EngageKit Chrome extension — AI-assisted LinkedIn comment drafting",
   "scripts": {
     "test": "node --test test/**/*.test.js"
   }

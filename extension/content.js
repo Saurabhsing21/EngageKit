@@ -20,8 +20,8 @@
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'engage-ext-post-btn engage-ext-post-btn--inline';
-    btn.setAttribute('aria-label', 'Generate comment with EngageLens');
-    btn.title = 'EngageLens — draft a comment';
+    btn.setAttribute('aria-label', 'Generate comment with EngageKit');
+    btn.title = 'EngageKit — draft a comment';
     btn.innerHTML = `
       <span class="engage-ext-post-btn__icon" aria-hidden="true">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,8 +58,8 @@
       },
       (response) => {
         if (chrome.runtime.lastError) {
-          console.warn('[EngageLens]', chrome.runtime.lastError.message);
-          showToast('Could not open EngageLens panel. Try the toolbar icon.');
+          console.warn('[EngageKit]', chrome.runtime.lastError.message);
+          showToast('Could not open EngageKit panel. Try the toolbar icon.');
           return;
         }
         if (response && response.error) {
@@ -125,7 +125,7 @@
           text = extractPostText(postRoot) || '';
         }
       } catch (err) {
-        console.warn('[EngageLens] extract failed', err);
+        console.warn('[EngageKit] extract failed', err);
       }
 
       text = (text || '').trim();
@@ -173,11 +173,11 @@
     fab.type = 'button';
     fab.id = 'engage-ext-fab';
     fab.className = 'engage-ext-fab';
-    fab.setAttribute('aria-label', 'Open EngageLens');
-    fab.title = 'Open EngageLens';
+    fab.setAttribute('aria-label', 'Open EngageKit');
+    fab.title = 'Open EngageKit';
     fab.innerHTML = `
       <span class="engage-ext-fab__logo" aria-hidden="true">E</span>
-      <span class="engage-ext-fab__text">EngageLens</span>
+      <span class="engage-ext-fab__text">EngageKit</span>
     `;
     fab.addEventListener('click', (e) => {
       e.preventDefault();
